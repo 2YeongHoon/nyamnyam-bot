@@ -1,37 +1,37 @@
-//cors 우회 프록시 서버 URL
-// const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-// 수집 대상 URL
-const url =
-  "https://www.instagram.com/oneul_sikdang/";
-// 크롤링 함수
-async function crawl(url) {
-  // 수집중인 URL
-  const decodedUrl = decodeURI(url);
-  console.log(`크롤링 ${decodedUrl} ...`);
-  // URL에서 데이터를 가져옴
-  const response = await fetch(url, {
-    // headers: {
-    //     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-    //     'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-    // }
-  });
-  // 응답 데이터를 문자열로 변환
-  const htmlString = await response.text();
-  // HTML 문자열을 파싱하여 DOM 객체 생성
-    const parser = new DOMParser();
-  //   const htmlDOM = parser.parseFromString(htmlString, "text/html");
-  // 데이터 추출
-  //   const title = htmlDOM.querySelector("title").textContent;
-  //   // 페이지내의 텍스트만 가져오기
-  //   const content = htmlDOM.querySelector("#mw-content-text").textContent;
-  //   // 추출한 데이터에서 연속된 개행 문자를 하나의 공백으로 대체
-  //   const contentWithSingleNewlines = content.replace(/\n{2,}/g, "\n");
-  //   console.log(`Title: ${title}\nContent: ${contentWithSingleNewlines}\n`);
-  console.log("[htmlDOM]", htmlString);
+import { Builder, By, until } from 'selenium-webdriver';
+import { load } from "cheerio";
+
+async function fetchPage() {
+  // 브라우저 드라이버를 설정합니다 (Chrome 사용).
+  let driver = await new Builder().forBrowser('chrome').build();
+
+  try {
+    // 특정 URL로 이동합니다.
+    await driver.get('https://www.instagram.com/oneul_sikdang/');  // 여기에 대상 URL을 입력하세요.
+
+    // 페이지 로딩을 기다립니다.
+    await driver.sleep(5000);  // 필요에 따라 조정
+
+    // 페이지 소스를 가져옵니다.
+    let pageSource = await driver.getPageSource();
+
+    // cheerio를 사용하여 페이지 소스를 파싱합니다.
+    const $ = load(pageSource);
+
+    // 모든 이미지 태그를 찾습니다.
+    const imageList = [];
+    $('img').each((i, img) => {
+      const src = $(img).attr('src');
+      if (src) {
+        imageList.push(src);
+      }
+    });
+
+    console.log(imageList[4]);
+  } finally {
+    // 브라우저를 종료합니다.
+    await driver.quit();
+  }
 }
-// 실행
-crawl(url)
-  .then(() => {
-    console.log("데이터 수집 완료");
-  })
-  .catch((err) => console.error(err));
+
+fetchPage();
