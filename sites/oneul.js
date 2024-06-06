@@ -1,7 +1,7 @@
 import { Builder, By, until } from 'selenium-webdriver';
 import { load } from "cheerio";
 
-async function fetchPage() {
+export default async function checkOneul() {
   // 브라우저 드라이버를 설정합니다 (Chrome 사용).
   let driver = await new Builder().forBrowser('chrome').build();
 
@@ -27,11 +27,9 @@ async function fetchPage() {
       }
     });
 
-    console.log(imageList[4]);
+    return imageList[4];
   } finally {
     // 브라우저를 종료합니다.
     await driver.quit();
   }
 }
-
-fetchPage();
