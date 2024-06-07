@@ -23,11 +23,9 @@ export default async function (feed, template) {
 function templateOneul(feed) {
   return [
     {
-      type: "section",
-      text: {
-        type: "plain_text",
-        text: feed
-      }
+      image_url: feed,
+      text: "오늘식당",
+      pretext: "오늘식당 메뉴"
     }
   ];
 }
@@ -36,8 +34,8 @@ function templateOneul(feed) {
 async function sendMessage(message) {
   console.log("sendMessage Start", message);
   const params = {
-    channel: "", 
-    blocks: message,
+    channel: "",
+    attachments: message,
   };
 
   try {
