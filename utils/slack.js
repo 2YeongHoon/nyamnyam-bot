@@ -6,26 +6,45 @@ const bearer = "Bearer " + token;
 
 /**
  * 슬랙 템플릿별 메시지 전송
- * @param { object[] } feedList 외주 피드
+ * @param { object[] } menu 메뉴 이미지
  * @param { 'oneul' } template 템플릿 형식
  */
-export default async function (feed, template) {
+export default async function (menu, template) {
   if (template === "oneul") {
-    sendMessage(templateOneul(feed));
+    sendMessage(templateOneul(menu));
+  }
+
+  if (template === "jungban") {
+    sendMessage(templateJungban(menu));
   }
 }
 
 /**
  * 오늘식당 메시지 템플릿
- * @param { OneulFeed } feed
+ * @param { OneulMenu } menu
  * @returns { any[] }
  */
-function templateOneul(feed) {
+function templateOneul(menu) {
   return [
     {
-      image_url: feed,
+      image_url: menu,
       text: "오늘식당",
       pretext: "오늘식당 메뉴"
+    }
+  ];
+}
+
+/**
+ * 정반식당 메시지 템플릿
+ * @param { JungbanMenu } menu
+ * @returns { any[] }
+ */
+function templateJungban(menu) {
+  return [
+    {
+      image_url: menu,
+      text: "정반식당",
+      pretext: "정반식당 메뉴"
     }
   ];
 }
