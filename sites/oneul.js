@@ -1,12 +1,17 @@
 import { Builder, By, until } from 'selenium-webdriver';
 import { load } from "cheerio";
+import {config} from "dotenv";
+
+config()
+
+const URL = process.env.ONEUL_URL;
 
 export default async function checkOneul() {
   let driver = await new Builder().forBrowser('chrome').build();
 
   try {
     // 특정 URL로 이동합니다.
-    await driver.get('https://www.instagram.com/oneul_sikdang/');
+    await driver.get(URL);
 
     // 페이지 로딩을 기다립니다.
     await driver.sleep(3000);
@@ -26,10 +31,9 @@ export default async function checkOneul() {
       }
     });
 
-    // 가져온 이미지리스트 중 4번째 이미지 선택
     return imageList[4];
   } finally {
-    // 브라우저를 종료
+    // 브라우저 종료
     await driver.quit();
   }
 }
