@@ -3,9 +3,6 @@ import {config} from "dotenv";
 
 config()
 
-console.log('[ENV!!!]',process.env)
-console.log('[ENV!!!]',process.env.OPEN_API_HOLIDAY_SERVICE_KEY)
-console.log('[ENV!!!]',process.env.OPEN_API_HOLIDAY_URL)
 const SERVICE_KEY = process.env.OPEN_API_HOLIDAY_SERVICE_KEY;
 const URL = process.env.OPEN_API_HOLIDAY_URL;
 
