@@ -1,8 +1,12 @@
 import axios from "axios";
+import {config} from "dotenv";
 
-const url = "https://slack.com/api/chat.postMessage";
-const token = "";
-const bearer = "Bearer " + token;
+config()
+
+const URL = process.env.SLACK_API_URL;
+const TOKEN = process.env.SLACK_API_TOKEN;
+const CHANNEL_ID = process.env.SLACK_CHANNEL_ID;
+const BEARER = "Bearer " + TOKEN;
 
 /**
  * 슬랙 템플릿별 메시지 전송
@@ -53,12 +57,12 @@ function templateJungban(menu) {
 async function sendMessage(message) {
   console.log("sendMessage Start", message);
   const params = {
-    channel: "",
+    channel: CHANNEL_ID,
     attachments: message,
   };
 
   try {
-    const result = await axios.post(url, params, { headers: { Authorization: bearer } });
+    const result = await axios.post(URL, params, { headers: { Authorization: BEARER } });
     console.log('[result]', result)
   } catch (error) {
     console.groupCollapsed("Slack Message Send Failed");
