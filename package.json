@@ -4,7 +4,8 @@
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.4.5",
     "selenium-webdriver": "^4.21.0",
-    "xmldom": "^0.6.0"
+    "xmldom": "^0.6.0",
+    "chromedriver": "^114.0.0" 
   },
   "type": "module"
 }
