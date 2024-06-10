@@ -14,12 +14,10 @@ async function checkSitesFeeds() {
 
   console.log(":: Start Check Oneul Menu");
   const oneulMenu = await checkOneul();
-    // const oneulMenu = 'https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/447457571_6254264108031393_4747266383530006148_n.heic?stp=c0.141.1131.1131a_dst-jpg_e35_s640x640_sh0.08&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=Sz_vXTuMyjUQ7kNvgFAThco&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AYDIc0Cm5Xx75joCjAhK9V2tmsNdxx9MIiVbZu6l-OEifQ&oe=6667907D&_nc_sid=8b3546';
   console.log(":: End Check Oneul Menu (" + oneulMenu.length + ")");
 
   console.log(":: Start Check Jungban Menu");
   const jungbanMenu = await checkJungban();
-  // const jungbanMenu = 'https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/447457571_6254264108031393_4747266383530006148_n.heic?stp=c0.141.1131.1131a_dst-jpg_e35_s640x640_sh0.08&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=109&_nc_ohc=Sz_vXTuMyjUQ7kNvgFAThco&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AYDIc0Cm5Xx75joCjAhK9V2tmsNdxx9MIiVbZu6l-OEifQ&oe=6667907D&_nc_sid=8b3546';
   console.log(":: End Check Jungban Menu(" + jungbanMenu.length + ")");
 
   if (oneulMenu.length > 0) {
