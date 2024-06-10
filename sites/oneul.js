@@ -3,18 +3,18 @@ import { load } from "cheerio";
 import {config} from "dotenv";
 
 config()
-
 const URL = process.env.ONEUL_URL;
+const SELENIUM_URL = process.env.SELENIUM_URL || "http://selenium:4444/wd/hub";  // 환경 변수를 통해 Selenium URL 설정
 
 export default async function checkOneul() {
-  let driver = await new Builder().forBrowser('chrome').build();
+  let driver = await new Builder().forBrowser('chrome').usingServer(SELENIUM_URL).build();
 
   try {
     // 특정 URL로 이동합니다.
     await driver.get(URL);
 
     // 페이지 로딩을 기다립니다.
-    await driver.sleep(3000);
+    await driver.sleep(5000);
 
     // 페이지 소스를 가져옵니다.
     let pageSource = await driver.getPageSource();
