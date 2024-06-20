@@ -13,7 +13,7 @@ const BEARER = "Bearer " + TOKEN;
  * @param { object[] } menu 메뉴 이미지
  * @param { 'oneul' } template 템플릿 형식
  */
-export default async function (menu, template) {
+export async function sendSlackMessage(menu, template) {
   if (template === "oneul") {
     sendMessage(templateOneul(menu));
   }

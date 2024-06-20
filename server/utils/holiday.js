@@ -10,7 +10,7 @@ const ZERO_BASE_MONTH = 1;
 const DATE_PREFIX = "0";
 const MAX_PARAMETER_SIZE = 50;
 
-export default async function (date) {
+export async function checkHoliday(date) {
     return await isHoliday(date);  
 }
 

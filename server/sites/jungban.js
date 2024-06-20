@@ -6,8 +6,9 @@ config()
 const URL = process.env.JUNGBAN_URL;
 const SELENIUM_URL = process.env.SELENIUM_URL || "http://selenium:4444/wd/hub";  // 환경 변수를 통해 Selenium URL 설정
 
-export default async function checkJungban() {
-  let driver = await new Builder().forBrowser('chrome').usingServer(SELENIUM_URL).build();
+export async function checkJungban() {
+  // let driver = await new Builder().forBrowser('chrome').usingServer(SELENIUM_URL).build();
+  let driver = await new Builder().forBrowser('chrome').build();
 
   try {
     // 특정 URL로 이동합니다.
