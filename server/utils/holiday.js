@@ -34,6 +34,7 @@ async function isHoliday(date) {
       console.log("Today is Holiday");
       return true;
     }
+    console.log("Today is Not Holiday");
     return false;
 }
 

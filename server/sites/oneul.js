@@ -7,8 +7,11 @@ const URL = process.env.ONEUL_URL;
 const SELENIUM_URL = process.env.SELENIUM_URL || "http://selenium:4444/wd/hub";  // 환경 변수를 통해 Selenium URL 설정
 
 export async function checkOneul() {
-  let driver = await new Builder().forBrowser('chrome').usingServer(SELENIUM_URL).build();
-  // let driver = await new Builder().forBrowser('chrome').build();
+  // 셀리니움 서버 사용
+  // let driver = await new Builder().forBrowser('chrome').usingServer(SELENIUM_URL).build();
+
+  // 로컬 크롬 엔진 사용
+  let driver = await new Builder().forBrowser('chrome').build();
 
   try {
     // 특정 URL로 이동합니다.
