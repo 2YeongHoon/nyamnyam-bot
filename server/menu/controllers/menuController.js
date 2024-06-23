@@ -1,6 +1,6 @@
 import express from 'express';
-import { checkSitesFeeds } from '../service/SlackService.js';
-import { checkHoliday } from '../utils/holiday.js';
+import { checkSitesFeeds } from '../services/menuService.js';
+import { checkHoliday } from '../../external/holiday/holiday.js';
 
 const router = express.Router()
 

@@ -1,7 +1,6 @@
-import { sendSlackMessage } from '../utils/slack.js';
-// import { validateHoliday } from "../utils/holiday.js";
-import { checkOneul } from "../sites/oneul.js";
-import { checkJungban } from "../sites/jungban.js";
+import { sendSlackMessage } from '../../external/slack/slack.js';
+import { checkOneul } from "../../external/slack/sites/oneul.js";
+import { checkJungban } from "../../external/slack/sites/jungban.js";
 
 export async function checkSitesFeeds() {
 
