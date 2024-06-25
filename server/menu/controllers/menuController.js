@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
   const dateNow = new Date();
   console.group(dateNow.toLocaleString());
 
-  if(checkHoliday(dateNow)) {
-    res.send("fail");
-    return;
-  }
+  // if(checkHoliday(dateNow)) {
+  //   res.send("fail");
+  //   return;
+  // }
   checkSitesFeeds();
   res.send('ok');
 });
