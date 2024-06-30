@@ -35,7 +35,7 @@ export async function checkOneul() {
       }
     });
 
-    return imageList[4];
+    return imageList[3];
   } finally {
     // 브라우저 종료
     await driver.quit();
